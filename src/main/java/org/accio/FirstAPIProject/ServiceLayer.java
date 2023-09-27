@@ -1,12 +1,14 @@
 package org.accio.FirstAPIProject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class ServiceLayer {
-    RepositoryLayer repositoryLayerObj = new RepositoryLayer();
+    @Autowired
+    RepositoryLayer repositoryLayerObj;
 
     public String addUserToDB(UserInfo obj) {
         repositoryLayerObj.addUserToDB(obj);
@@ -25,12 +27,11 @@ public class ServiceLayer {
     }
 
     public List<UserInfo> getUsersFilterByAge(Integer minAge, Integer maxAge) {
-        List<UserInfo> list = new ArrayList<>();
-
         List<UserInfo> allUsers = repositoryLayerObj.getAllUsers();
+
+        List<UserInfo> list = new ArrayList<>();
         for (UserInfo obj : allUsers)
-            if (obj.getAge() >= minAge && obj.getAge() <= maxAge)
-                list.add(obj);
+            if (obj.getAge() >= minAge && obj.getAge() <= maxAge) list.add(obj);
 
         return list;
     }
@@ -40,9 +41,9 @@ public class ServiceLayer {
     }
 
     public List<String> findNames() {
-        List<String> list = new ArrayList<>();
-
         List<UserInfo> allUsers = repositoryLayerObj.getAllUsers();
+
+        List<String> list = new ArrayList<>();
         for (UserInfo obj : allUsers)
             list.add(obj.getName());
 

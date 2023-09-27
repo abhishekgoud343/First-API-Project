@@ -1,12 +1,14 @@
 package org.accio.FirstAPIProject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 public class ControlLayer {
-    ServiceLayer serviceLayerObj = new ServiceLayer();
+    @Autowired
+    private ServiceLayer serviceLayerObj;
 
     @PostMapping("/addUserViaReqBody")
     public String addUserToDB(@RequestBody UserInfo obj) {
