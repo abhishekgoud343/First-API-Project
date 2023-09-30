@@ -6,7 +6,7 @@ import java.util.*;
 
 @Repository
 public class RepositoryLayer {
-    Map<Integer, UserInfo> userInfoDB = new HashMap<>();
+    private Map<Integer, UserInfo> userInfoDB = new HashMap<>();
 
     public void addUserToDB(UserInfo obj) {
         userInfoDB.put(obj.getUserId(), obj);
