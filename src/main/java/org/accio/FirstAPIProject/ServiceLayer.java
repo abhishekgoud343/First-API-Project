@@ -8,7 +8,7 @@ import java.util.*;
 @Service
 public class ServiceLayer {
     @Autowired
-    RepositoryLayer repositoryLayerObj;
+    private RepositoryLayer repositoryLayerObj;
 
     public String addUserToDB(UserInfo obj) {
         repositoryLayerObj.addUserToDB(obj);
